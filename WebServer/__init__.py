@@ -18,7 +18,13 @@ def create_app():
     # 테이블 클래스 
     from . import models
     
-    from .views import main_views
+    from .views import main_views, NA_views, HW_views, SM_views, JY_views
+    
     app.register_blueprint(main_views.bp)
+    app.register_blueprint(NA_views.bp)
+    app.register_blueprint(HW_views.bp)
+    app.register_blueprint(SM_views.bp)
+    app.register_blueprint(JY_views.bp)
+    
     
     return app
