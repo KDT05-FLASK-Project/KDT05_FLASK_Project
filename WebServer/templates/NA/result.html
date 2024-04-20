@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 10px;
+            height: 100vh;
+        }
+
+        .grid-item {
+            border: 1px solid black;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        body {
+            background-image: url('../static/NA/background.png');
+            background-size: auto;
+            background-repeat: repeat;
+            background-color: rgba(255, 255, 255, 0.1);
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="grid-item">
+            <h2>잠뜰 티비 소개</h2>
+            <img src="../static/NA/Thumbnail.png" alt="placeholder" width="500" height="300" />
+        </div>
+        <div class="grid-item">
+            {% if table_list %}
+            <ul>
+                {% for data in table_list %}
+                <li><a href="/detail/{{data.input}}">{{data.output}}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>질문이 없습니다.</p>
+            {% endif %}
+        </div>
+        <div class="grid-item">
+            {% if result %}
+            <p>{{result}}</p>
+            {% endif %}
+        </div>
+        <div class="grid-item">
+            {% if result2 %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>단어</th>
+                        <th>점수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for word, score in result2 %}
+                    <tr>
+                        <td>{{ word }}</td>
+                        <td>{{ score }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // JavaScript 코드를 작성할 수 있습니다.
+        // 예를 들어, 이미지 영역에 이미지를 동적으로 로드하거나,
+        // 데이터베이스 영역의 링크를 클릭했을 때 동작을 정의할 수 있습니다.
+    </script>
+</body>
+
+</html>
