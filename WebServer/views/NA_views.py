@@ -31,10 +31,22 @@ bp = Blueprint('NA', __name__, template_folder = 'templates',
 
 
 #======================================================================================
+# '/' 경로로 들어오는 GET 요청에 대해는 index 페이지를 렌더링합니다.
+# '/result' 경로로 들어오는 GET 및 POST 요청에 대해서는 결과를 보여줍니다.
+# 사용자가 텍스트를 입력하면 해당 텍스트를 기반으로 댓글을 생성하고,
+# 사용자가 유사도를 확인하고자 할 때는 Word2Vec 모델을 사용하여 가장 유사한 단어를 찾습니다.
+# 결과를 템플릿으로 렌더링하여 사용자에게 보여줍니다. 
+#======================================================================================
 @bp.route('/')
 def index():
     return render_template("NA/index.html")
 
+#======================================================================================
+# '/result' 경로로 들어오는 GET 및 POST 요청에 대해서는 결과를 보여줍니다.
+# 사용자가 텍스트를 입력하면 해당 텍스트를 기반으로 댓글을 생성하고,
+# 사용자가 유사도를 확인하고자 할 때는 Word2Vec 모델을 사용하여 가장 유사한 단어를 찾습니다.
+# 결과를 템플릿으로 렌더링하여 사용자에게 보여줍니다. 
+#======================================================================================
 @bp.route('/result', methods=['GET','POST'])
 def show_result():
     
@@ -69,12 +81,30 @@ def show_result():
     else :
         return render_template("NA/result.html", table_list=table_list, channel_info=channel_info)
 
+
+#======================================================================================
+# 이 함수는 특정 댓글의 세부 정보를 가져와서 보여줍니다.
+#
+# Parameters:
+#     comment_id (int): 댓글의 고유 식별자입니다.
+#
+# Returns:
+#     template: NA/comment_processing.html 템플릿을 렌더링하고, 해당 댓글의 정보를 전달합니다.
+#======================================================================================
 @bp.route('/detail/<int:comment_id>', methods=['GET','POST'])
 def detail(comment_id):
     comment = NA_DB.query.get(comment_id)
     return render_template("NA/comment_processing.html", comment=comment)
 
-
+#======================================================================================
+# 이 함수는 특정 댓글을 삭제합니다.
+#
+# Parameters:
+#     comment_id (int): 삭제할 댓글의 고유 식별자입니다.
+#
+# Returns:
+#     redirect: 'NA.show_result' 라우트로 리디렉션합니다.
+#======================================================================================
 @bp.route('/delete/<int:comment_id>', methods=['GET','POST'])
 def delete_comment(comment_id):
     comment = NA_DB.query.get(comment_id)
@@ -83,7 +113,13 @@ def delete_comment(comment_id):
     table_list = NA_DB.query.order_by(NA_DB.create_date.desc())
     return redirect(url_for('NA.show_result'))
 
-
+#======================================================================================
+# 해당 함수는 특정 댓글을 수정합니다.
+#     Parameters:
+#         comment_id (int): 수정할 댓글의 고유 식별자입니다.
+#     Returns:
+#         redirect: 'NA.show_result' 라우트로 리디렉션합니다.
+#======================================================================================
 @bp.route('/update/<int:comment_id>', methods=['GET','POST']) # 수정 추가기능 구현 필요
 def update_comment(comment_id):
     comment = NA_DB.query.get(comment_id)
@@ -91,7 +127,12 @@ def update_comment(comment_id):
     db.session.commit()
     return redirect(url_for('NA.show_result'))
 
-
+#======================================================================================
+# 이 함수는 사용자가 입력한 댓글을 업로드합니다.
+#
+# Returns:
+#     redirect: 'NA.show_result' 라우트로 리디렉션합니다.
+#======================================================================================
 @bp.route('/upload', methods=['GET','POST'])
 def upload_comment():
     req_dict = request.form.to_dict() # 값들 갖고 오기 

@@ -40,7 +40,8 @@ CHANNEL_ID = 'UCg7rkxrTnIhiHEpXY1ec9NA'
 channel_info = get_channel_info(CHANNEL_ID)
 
 # 채널 정보 출력
-print('채널 제목:', channel_info['channel_title'])
-print('구독자 수:', channel_info['subscriber_count'])
-print('영상 개수:', channel_info['video_count'])
-print('채널 설명:', channel_info['channel_description'])
+if __name__ == '__main__':
+    print('채널 제목:', channel_info['channel_title'])
+    print('구독자 수:', channel_info['subscriber_count'])
+    print('영상 개수:', channel_info['video_count'])
+    print('채널 설명:', channel_info['channel_description'])
