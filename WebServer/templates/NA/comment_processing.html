@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>댓글 정보</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 10px;
+      }
+
+      .post-info {
+        margin-bottom: 20px;
+      }
+
+      .post-info h2 {
+        font-size: 18px;
+        color: #666;
+      }
+
+      .post-info p {
+        font-size: 16px;
+        color: #888;
+        margin-bottom: 5px;
+      }
+
+      .btn-group {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .btn {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>댓글 정보</h1>
+      <div class="post-info">
+        <h2>댓글 ID: {{ comment.id }}</h2>
+        <p>생성 키워드: {{ comment.input }}</p>
+        <p>댓글 내용: {{ comment.output }}</p>
+        <p>생성 날짜: {{ comment.create_date }}</p>
+      </div>
+      <!-- 수정, 삭제 버튼 요소 추가 -->
+      <div class="btn-group">
+        <button
+          class="btn"
+          onclick="window.location.href='/na_db/update/{{ comment.id }}'"
+        >
+          수정
+        </button>
+        <button
+          class="btn"
+          onclick="window.location.href='/na_db/delete/{{ comment.id }}'"
+        >
+          삭제
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

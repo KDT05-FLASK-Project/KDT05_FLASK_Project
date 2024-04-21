@@ -1,38 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Page</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Custom CSS -->
     <style>
-        body {
-            padding-top: 20px;
-            text-align: center;
-        }
+      body {
+        padding-top: 20px;
+        text-align: center;
+      }
 
-        .btn-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+      .btn-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .slide-contents h2 {
+        display: none;
+      }
+
+      .slideshow-container {
+        max-width: 25%;
+        position: relative;
+        margin: 50px auto;
+        overflow: hidden;
+      }
+
+      .fade {
+        animation-name: fade;
+        animation-duration: 1.5s;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0.4;
         }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .slideshow-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      /* Hover effect for buttons */
+      .btn-container a {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-container a:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.5)
+        );
+        transition: opacity 0.5s;
+        opacity: 0;
+      }
+
+      .btn-container a:hover:after {
+        opacity: 1;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body style="background-image: url('../../static/NA/5.jpg'); color: white">
     <div class="container">
-        <h1>Welcome to Main Page</h1>
-        <div class="btn-container">
-            <a href="na_db" class="btn btn-primary btn-lg">명노아</a>
-            <a href="sm_db" class="btn btn-primary btn-lg">이시명</a>
-            <a href="jy_db" class="btn btn-primary btn-lg">변주영</a>
-            <a href="hw_db" class="btn btn-primary btn-lg">양현우</a>
-        </div>
+      <h1>자연어처리 세계에 오신것을 환영합니다</h1>
+      <div class="btn-container">
+        <a href="na_db" class="btn btn-primary btn-lg">명노아</a>
+        <a href="sm_db" class="btn btn-primary btn-lg">이시명</a>
+        <a href="jy_db" class="btn btn-primary btn-lg">변주영</a>
+        <a href="hw_db" class="btn btn-primary btn-lg">양현우</a>
+      </div>
     </div>
-</body>
+    <hr />
+    <br />
+    <div class="slide-contents">
+      <h2>명노아 : 잠뜰TV 댓글 생성 프로그램</h2>
+      <h2>이시명 : 영어-한글 번역 프로그램</h2>
+      <h2>변주영 : 아마존 독서 리뷰 요약 프로그램</h2>
+      <h2>양현우 : 감정 분석 프로그램</h2>
+    </div>
+    <div class="slideshow-container">
+      <img
+        class="mySlides fade"
+        src="../static/NA/1.jpg"
+        width="150"
+        height="150"
+        alt="Image 1"
+      />
+      <img
+        class="mySlides fade"
+        src="../static/NA/2.jpg"
+        width="150"
+        height="150"
+        alt="Image 2"
+      />
+      <img
+        class="mySlides fade"
+        src="../static/NA/3.jpg"
+        width="150"
+        height="150"
+        alt="Image 3"
+      />
+      <img
+        class="mySlides fade"
+        src="../static/NA/4.jpg"
+        width="150"
+        height="150"
+        alt="Image 4"
+      />
+    </div>
 
+    <script>
+      var slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var contents = document.querySelectorAll(".slide-contents h2");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+          contents[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        contents[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+      }
+    </script>
+  </body>
 </html>

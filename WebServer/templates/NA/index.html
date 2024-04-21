@@ -1,25 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <!--글자를 입력받는 input 요소와 form 생성-->
-    <form action="/na_db/result" method="POST">
-      <input
-        type="text"
-        name="name"
-        placeholder="댓글을 시작할 단어 입력하시오."
-      />
-      <input
-        type="text"
-        name="simir"
-        placeholder="잠뜰 TV내에서 유사한 단어를 뽑아보세요!"
-      />
-      <input type="submit" value="제출" />
-    </form>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{url_for('static', filename='NA/bootstrap.min.css')}}" />
+  <style>
+    .btn-submit {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+      /* 모든 속성에 대해 0.3초 동안 트랜지션 효과 적용 */
+    }
+
+    /* 마우스를 올렸을 때의 스타일 */
+    .btn-submit:hover {
+      font-size: 14px;
+      /* 글자 크기 증가 */
+      background: linear-gradient(45deg, #4CAF50, #45a049);
+      /* 그라데이션 색상 변경 */
+    }
+  </style>
+  <title>Document</title>
+</head>
+
+<body
+  style="display: flex; justify-content: center; align-items: center; height: 100vh;  background-image: url('../../static/NA/input_background.png');">
+
+  <form action="/na_db/result" method="POST"
+    style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);">
+    <h1 style="text-align: center;"> 키워드 관련 댓글 생성 프로그램 </h1>
+
+    <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+      <div style="flex: 1; padding: 10px;">
+        <p>기본값 = "수현"<br>
+          Ko_GPT2를 활용하여 만든 트랜스포머 기반 댓글 생성기<br>
+          값 입력시 : 4초 소요
+        </p>
+        <input type="text" name="name" placeholder="댓글을 시작할 단어 입력하시오." value="수현"
+          style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+      </div>
+      <div style="flex: 1; padding: 10px;">
+        <p>기본값 = "마인크래프트"<br>
+          word2vec를 활용하여 만든 유사 단어 추출기<br><br>
+          값 입력시 : 0.2초 소요
+        </p>
+        <input type="text" name="simir" placeholder="잠뜰 TV내에서 유사한 단어를 뽑아보세요!" value="마인크래프트"
+          style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+      </div>
+    </div>
+    <input type="submit" value="제출" class="btn-submit">
+  </form>
+</body>
+
 </html>
