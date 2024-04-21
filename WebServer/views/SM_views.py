@@ -6,5 +6,5 @@ bp = Blueprint('SM', __name__, template_folder = 'templates',
 
 @bp.route('/')
 def index():
-    return f"이시명의 페이지입니다!"
-    
+    return render_template()
+
