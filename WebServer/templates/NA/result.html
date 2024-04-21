@@ -1,99 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Grid Layout</title>
-    <style>
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, 1fr);
-            grid-gap: 10px;
-            height: 100vh;
-        }
+    <title>잠뜰 TV 댓글 생성 창</title>
+    <link
+      href="{{ url_for('static',filename='NA/result_css.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Malgun+Gothic&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-        .grid-item {
-            border: 1px solid black;
-            padding: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        body {
-            background-image: url('../static/NA/background.png');
-            background-size: auto;
-            background-repeat: repeat;
-            background-color: rgba(255, 255, 255, 0.1);
-
-        }
-    </style>
-</head>
-
-<body>
+  <body style="font-family: 'Malgun Gothic', sans-serif">
+    <!--div1 : 잠뜰 티비 소개 영역-->
     <div class="grid-container">
-        <div class="grid-item">
-            <h2>잠뜰 티비 소개</h2>
-            <img src="../static/NA/Thumbnail.png" alt="placeholder" width="500" height="300" />
+      <div class="grid-item">
+        <h1>잠뜰 티비 소개</h1>
+        <div class="channel">
+          <img
+            src="../static/NA/Thumbnail.png"
+            alt="잠뜰 티비 썸네일"
+            width="1000"
+            height="400"
+          />
+          <table id="channel-info-table">
+            <tr>
+              <td>채널 제목:</td>
+              <td>{{ channel_info.channel_title }}</td>
+            </tr>
+            <tr>
+              <td>구독자 수:</td>
+              <td>{{ channel_info.subscriber_count }}</td>
+            </tr>
+            <tr>
+              <td>영상 개수:</td>
+              <td>{{ channel_info.video_count }}</td>
+            </tr>
+            <tr>
+              <td>채널 설명:</td>
+              <td>{{ channel_info.channel_description }}</td>
+            </tr>
+          </table>
         </div>
-        <div class="grid-item">
-            {% if table_list %}
-            <ul>
-                {% for data in table_list %}
-                <li><a href="/detail/{{data.input}}">{{data.output}}</a></li>
-                {% endfor %}
-            </ul>
-            {% else %}
-            <p>질문이 없습니다.</p>
-            {% endif %}
-        </div>
-        <div class="grid-item">
-            {% if result %}
-            <p>{{result}}</p>
-            {% endif %}
-        </div>
-        <div class="grid-item">
-            {% if result2 %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>단어</th>
-                        <th>점수</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for word, score in result2 %}
-                    <tr>
-                        <td>{{ word }}</td>
-                        <td>{{ score }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% endif %}
-        </div>
+      </div>
+
+      <div class="grid-item">
+        <h1>댓글 데이터베이스</h1>
+        {% if table_list %}
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Input</th>
+              <th>Output</th>
+              <th>Create Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in table_list %}
+            <tr>
+              <td>{{ data.id }}</td>
+              <td>{{ data.input }}</td>
+              <td>
+                <a href="/na_db/detail/{{ data.id }}">{{ data.output }}</a>
+              </td>
+              <td>{{ data.create_date }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>댓글이 없습니다</p>
+        {% endif %}
+      </div>
+      <div class="grid-item">
+        {% if result %}
+        <h1>생성된 댓글 - 관련 키워드 : {{cache_input}}</h1>
+        <h3>{{result}}</h3>
+        <form action="/na_db/upload" method="POST">
+          <input type="hidden" name="cache_input" value="{{cache_input}}" />
+          <input type="hidden" name="cache_output" value="{{cache_output}}" />
+          <input type="submit" value="댓글 올리기" />
+        </form>
+        {% endif %} {% if not result and not result2%}
+        <button onclick="window.location.href='/na_db/'">
+          댓글 다시 만들기</button
+        >{% endif %}
+      </div>
+      <div class="grid-item">
+        {% if result2 %}
+        <h2>"{{cache_input}}" 관련 키워드</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>단어</th>
+              <th>점수</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for word, score in result2 %}
+            <tr>
+              <td>{{ word }}</td>
+              <td>{{ score }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %} {% if not result and not result2%}
+        <button onclick="window.location.href='/'">모두의 화면으로 가기!</button
+        >{% endif %}
+      </div>
     </div>
-
-    <script>
-        // JavaScript 코드를 작성할 수 있습니다.
-        // 예를 들어, 이미지 영역에 이미지를 동적으로 로드하거나,
-        // 데이터베이스 영역의 링크를 클릭했을 때 동작을 정의할 수 있습니다.
-    </script>
-</body>
-
+  </body>
 </html>
