@@ -1,2 +1,11 @@
 /명노아/model/model3.pth
 /명노아/model/model100.pth
+이시명/best_model_final1.pth
+이시명/best_model_final2.pth
+이시명/best_model_final3.pth
+이시명/best_model_final4.pth
+변주영/models/second/Latest_Bart_Amazon_Books.pt
+변주영/models/second/Best_Bart_Amazon_Books.pt
+변주영/models/first/Latest_Bart_Amazon_Books.pt
+변주영/models/first/Best_Bart_Amazon_Books.pt
+WebServer/views/__pycache__/
