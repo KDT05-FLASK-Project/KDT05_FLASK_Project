@@ -7,7 +7,7 @@ class NA_DB(db.Model): # 명노아의 데이터베이스
     output = db.Column(db.String(200), nullable=False)
     create_date = db.Column(db.DateTime(), nullable=False)
     
-class JT_DB(db.Model): # 변주영의 데이터베이스 
+class JY_DB(db.Model): # 변주영의 데이터베이스 
     id = db.Column(db.Integer, primary_key=True)
     input = db.Column(db.String(1000), nullable=False)
     output = db.Column(db.String(200), nullable=False)
