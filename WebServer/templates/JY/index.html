@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summary Program</title>
+    <style>
+        .center {
+        text-align: center;
+        height: 100vh; /* 화면 전체 높이로 설정 */
+        }
+    </style>
+</head>
+<body>
+    <div class="center">
+        <h3>요약하고 싶은 문장을 입력하세요 :D</h3>
+        <form action="{{url_for('JY.index')}}" method="POST">
+        {% if not input_sentence %}
+            <textarea name="sentence" cols="50" rows="10" placeholder="입력 텍스트" spellcheck="false"></textarea><br>
+        {% else %}
+            <textarea name="sentence" cols="50" rows="10" spellcheck="false">{{input_sentence}}</textarea><br>
+        {% endif %}
+            <input type="submit" value="Go!">
+        </form>
+    {% if summary_result %}
+        <textarea name="sentence" cols="50" rows="3" spellcheck="false">{{summary_result}}</textarea>
+    {% endif %}
+    </div>
+</body>
+</html>
