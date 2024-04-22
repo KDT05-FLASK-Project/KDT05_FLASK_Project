@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>긍정, 부정 판별 모델</title>
+    <link
+      href="{{ url_for('static',filename='HW/index_css.css') }}"
+      rel="stylesheet"
+    />
 </head>
 <body>
+    <center>
+    <h1 style="color: white;">긍정/부정, 호불호 판별 모델</h1>
     <form method="post" action="/hw_db/result">
-        <fieldset>
+        
+        <fieldset style="width: 75%;">
+            <h2 style="color: rgb(119, 216, 243)">한글로 된 문장을 입력하세요</h2>
             <title>입력하세요</title>
             <p>
-                <label for="story">내용 : </label>
-                <textarea id="story" name="story" placeholder="긍정적인 내용인가 부정적인 내용인가 판별할 글을 입력해 주세요"></textarea>
+                <label for="story" style="color: aqua;">내용 : </label>
+                <textarea style="width: 50%;" id="story" name="story" placeholder="긍정적인 내용인가 부정적인 내용인가 판별할 글을 입력해 주세요"></textarea>
                 <input type="submit" value="제출">
             </p>
-
+            <h3 style="color: rgb(222, 101, 101);">*주의 : 너무 긴 글은 오류가 발생할 수 있습니다</h3>
         </fieldset>
+        
     </form>
+    </center>
 </body>
 </html>
