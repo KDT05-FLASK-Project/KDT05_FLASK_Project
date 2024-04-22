@@ -14,19 +14,21 @@
 <body>
     <div class="center">
         <br>
-        <h3>요약하고 싶은 리뷰를 입력하세요 :D</h3>
+        <h3>요약하고 싶은 영어 리뷰를 입력하세요 :D</h3>
         <form action="{{url_for('JY.index')}}" method="POST">
         {% if not input_sentence %}
-            <textarea name="input_sentence" cols="50" rows="10" placeholder="입력 텍스트" spellcheck="false"></textarea><br>
-        {% else %}
-            <textarea name="input_sentence" cols="50" rows="10" spellcheck="false">{{input_sentence}}</textarea><br>
-        {% endif %}
+            <textarea name="input_sentence" cols="50" rows="15" placeholder="입력 텍스트" spellcheck="false"></textarea><br>
             <input type="submit" value="Go!"><br><br>
-    {% if summary_result %}
+            <textarea name="summary_default" cols="50" rows="3" placeholder="요약된 문장이 여기에 표시됩니다." spellcheck="false"></textarea><br>
+        {% else %}
+            <textarea name="input_sentence" cols="50" rows="15" spellcheck="false">{{input_sentence}}</textarea><br>
+            <input type="submit" value="Go!"><br><br>
+        {% endif %}
+        {% if summary_result %}
             <textarea name="summary_result" cols="50" rows="3" spellcheck="false">{{summary_result}}</textarea><br>
             <input type="submit" name="db_check" value="DB보기">
             <input type="submit" name="db_add" value="DB등록">
-    {% endif %}
+        {% endif %}
         </form>
     </div>
 </body>
