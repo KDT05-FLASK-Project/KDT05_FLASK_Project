@@ -1,10 +1,10 @@
-# \_KDT05-FLASK Project
+# KDT05-FLASK Project
 
 <hr/>
 
 <hr/>
 
-경북대학교 KDT(Korea Digital Training) 빅데이터 전문가 양성과정 5기 : Flask 3팀입니다
+## 경북대학교 KDT(Korea Digital Training) 빅데이터 전문가 양성과정 5기 : Flask 3팀입니다
 
 변주영 : [깃허브 링크](https://github.com/5amriley)  
 이시명 : [깃허브 링크](https://github.com/juugii-ho)  
@@ -25,40 +25,20 @@
 | 패키지 이름  | 버전   |
 | ------------ | ------ |
 | Python       | 3.8.18 |
-| numpy        | 1.24.3 |
-| pytorch-cpu  | 2.2.0  |
+| gensim       | 4.3.0 |
+| nltk  | 3.6.6  |
 | torch        | 2.2.1  |
-| torchinfo    | 1.8.0  |
-| torchmetrics | 1.3.1  |
-| torchvision  | 0.17.1 |
-| torchviz     | 0.0.2  |
+| numpy    | 1.24.3  |
+| pandas | 2.0.3  |
+| pytorch  | 2.2.2 |
+| spacy | 3.7.2 |
+| torchtext | 0.17.2|
+| transformers | 4.14.3 |
+| urllib3 | 2.1.0 |
 
-<hr/>
+#### 실행 방법
 
-### KDT(Korea Digital Training)-HTML 기초
-
-<hr/>
-
-#### 사용한 데이터 사이트
-
-1.  <hr/>
-
-###### [주제입력]
-
-- 목차
-
-* 1. 주제 선정 배경
-* 2. 역할 분담
-* 3.
-* 4. 결론
-  </hr>
-
-###### 역할 분담
-
-|             역할 | 참여인원 |
-| ---------------: | -------- |
-|         주제선정 |          |
-|    Github Readme |          |
-|    데이터 전처리 |          |
-|              CNN |          |
-| 최종 결과물 산출 |          |
+해당 코드를 다운로드 후, 터미널을 연 뒤 다음 프롬프트를 입력하면 됩니다
+```
+flask run
+```
