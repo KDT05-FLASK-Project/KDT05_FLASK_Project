@@ -1,0 +1,2 @@
+Epoch 99 Completed
+Best Epoch : 0
