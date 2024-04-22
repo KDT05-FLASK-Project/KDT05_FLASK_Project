@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DB result</title>
+    <style>
+        /* 테이블 스타일링 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black; /* 테두리 스타일 지정 */
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h3>BART 요약모델 실행 결과</h3>
+    </center>
+    
+    {% if table_list %}
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Input</th>
+              <th>Output</th>
+              <th>Create Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for data in table_list %}
+            <tr>
+              <td>{{ data.id }}</td>
+              <td>{{ data.input }}</td>
+              <td>
+                <a href="/na_db/detail/{{ data.id }}">{{ data.output }}</a>
+              </td>
+              <td>{{ data.create_date }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+        <p>댓글이 없습니다</p>
+        {% endif %}
+</body>
+</html>
