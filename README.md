@@ -6,7 +6,7 @@
 
 ## 경북대학교 KDT(Korea Digital Training) 빅데이터 전문가 양성과정 5기 : Flask 3팀입니다
 
-변주영 : [깃허브 링크](https://github.com/5amriley)  
+변주영 : [깃허브 링크](https://github.com/rileybyun)  
 이시명 : [깃허브 링크](https://github.com/juugii-ho)  
 양현우 : [깃허브 링크](https://github.com/daat1996)  
 명노아 : [깃허브 링크](https://github.com/noah2397)
