@@ -64,6 +64,8 @@ python app.py
 
 <hr/>
 
+## 주제 : AI 자연어 비서
+
 #### 사용한 데이터 사이트
 
 1. AI-HUB : [링크](https://aihub.or.kr/)
