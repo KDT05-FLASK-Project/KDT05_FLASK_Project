@@ -4,7 +4,7 @@
 
 <hr/>
 
-경북대학교 KDT(Korea Digital Training) 빅데이터 전문가 양성과정 5기 : Flask 3팀입니다
+## 경북대학교 KDT(Korea Digital Training) 빅데이터 전문가 양성과정 5기 : Flask 3팀입니다
 
 변주영 : [깃허브 링크](https://github.com/5amriley)  
 이시명 : [깃허브 링크](https://github.com/juugii-ho)  
@@ -21,6 +21,7 @@
 <hr/>
 
 #### 개발환경
+
 
 | 패키지 이름      | 버전   |
 | ---------------- | ------ |
@@ -93,3 +94,5 @@ python app.py
 |  전체 웹페이지 구축  |        |   ✅   |        |   ✅   |
 |   개인 페이지 구축   |   ✅   |   ✅   |   ✅   |   ✅   |
 |        Readme        |   ✅   |        |   ✅   |        |
+
+
